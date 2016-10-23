@@ -1,0 +1,68 @@
+from django.db import models
+
+class Cliente(models.Model):
+    tipdocum = models.CharField(max_length=3)
+    iddocum = models.CharField(max_length=100)
+    nombre = models.CharField(max_length=200)
+    apellido = models.CharField(max_length=200)
+    alias = models.CharField(max_length=100)
+    ocupacion = models.CharField(max_length=200)
+    est_civil = models.CharField(max_length=1)
+    sexo = models.CharField(max_length=1)
+    direccion1 = models.CharField(max_length=300)
+    direccion2 = models.CharField(max_length=200)
+    pais = models.CharField(max_length=200)
+    ciudad = models.CharField(max_length=200)
+    email = models.EmailField()
+
+    def __unicode__(self):
+        return self.nombre
+
+class Ingreso(models.Model):
+    id_cli = models.ForeignKey(Cliente)
+    nombre = models.CharField(max_length=200)
+    direccion = models.CharField(max_length=300)
+    superior = models.CharField(max_length=300)
+    cargo = models.CharField(max_length=200)
+    ingreso = models.DecimalField(max_digits=5, decimal_places=2)
+    frecuencia = models.CharField(max_length=1)
+    tipo = models.CharField(max_length=1)
+    contacto = models.CharField(max_length=200)
+    telefono = models.CharField(max_length=15)
+    ext = models.CharField(max_length=5)
+    correo = models.EmailField()
+
+    def __unicode__(self):
+        return self.nombre
+
+class Referencia(models.Model):
+    id_cli = models.ForeignKey(Cliente)
+    nombre = models.CharField(max_length=300)
+    asunto = models.CharField(max_length=100)
+    tipo = models.CharField(max_length=1)
+
+    def __unicode__(self):
+        return self.nombre
+
+class Otros(models.Model):
+    id_cli = models.ForeignKey(Cliente)
+    nombre = models.CharField(max_length=200)
+    direccion = models.CharField(max_length=300)
+    telefono = models.CharField(max_length=15)
+    ext = models.CharField(max_length=5)
+    celular = models.CharField(max_length=15)
+    tipo = models.CharField(max_length=1)
+
+    def __unicode__(self):
+        return self.nombre
+
+
+
+
+
+
+
+
+
+
+
