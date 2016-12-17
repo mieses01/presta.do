@@ -1,14 +1,23 @@
 from django.db import models
 
+SEX_CHOICES = (
+    ("1", "Masculino"),
+    ("2", "Femenino"),
+)
+DOCUM_CHOICES = (
+    ("CED", "Cedula"),
+    ("PAS", "Pasaporte"),
+)
+
 class Cliente(models.Model):
-    tipdocum = models.CharField(max_length=3)
+    tipdocum = models.CharField(max_length=3,choices=DOCUM_CHOICES,default="CED")
     iddocum = models.CharField(max_length=100)
     nombre = models.CharField(max_length=200)
     apellido = models.CharField(max_length=200)
     alias = models.CharField(max_length=100)
     ocupacion = models.CharField(max_length=200)
     est_civil = models.CharField(max_length=1)
-    sexo = models.CharField(max_length=1)
+    sexo = models.CharField(max_length=1,choices=SEX_CHOICES,default=1)
     direccion1 = models.CharField(max_length=300)
     direccion2 = models.CharField(max_length=200)
     pais = models.CharField(max_length=200)
@@ -56,13 +65,7 @@ class Otros(models.Model):
     def __unicode__(self):
         return self.nombre
 
-
-
-
-
-
-
-
-
-
-
+class sexo(models.Model):
+    sexo = models.CharField(max_length=20)
+    def __unicode__(self):
+        return  self.sexo

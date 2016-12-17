@@ -1,4 +1,141 @@
+ {% extends 'presta_do/base.html' %}
+ {% load staticfiles %}
+ {% block content %}
+
 <html>
-        <p>Hi there!</p>
-        <p>It works!</p>
-    </html>
+<head>
+   <title>Try v1.2 Bootstrap Online</title>
+
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/bootstrap-table.css" %}">
+
+    <script src="{% static "js/vendor/modernizr-2.8.3-respond-1.4.2.min.js" %}"></script>
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script src="{% static "js/bootstrap.min.js" %}"></script>
+    <script src="{% static "js/bootstrap-table.js" %}"></script>
+</head>
+<body>
+<!--<div class = "container">
+   <div class = "row" >
+       <div class = "col-md-6 col-sm-3">
+           <div class = "panel panel-default">
+
+          <div class = "panel-heading">
+             <h4 class = "panel-title">
+                <p data-toggle = "collapse" data-parent = "#accordion" href = "#collapseOne">
+                   Datos Generales
+                </p>
+             </h4>
+          </div>
+
+          <div id = "collapseOne" class = "panel-collapse collapse in">
+             <div class = "panel-body">
+                 <div class = "col-md-12">
+                      <select class = "form-control">
+                         <option>CED</option>
+                         <option>PAS</option>
+                      </select>
+                     <input type = "text" class = "form-control" id = "docum" placeholder = "Documento">
+                     <input type = "text" class = "form-control" id = "nombre" placeholder = "Nombre">
+                     <input type = "text" class = "form-control" id = "apellido" placeholder = "Apellido">
+                     <input type = "text" class = "form-control" id = "ocupacion" placeholder = "Ocupacion">
+                     <input type = "text" class = "form-control" id = "alias" placeholder = "Alias">
+                     <label for = "name">Estado Civil</label>
+                     <select class = "form-control">
+                         <option>Soltero</option>
+                         <option>Casado</option>
+                      </select>
+                     <label for = "name">Sexo</label>
+                     <select class = "form-control">
+                         <option>Hombre</option>
+                         <option>Mujer</option>
+                      </select>
+                     <input type = "text" class = "form-control" id = "ciudad" placeholder = "Ciudad">
+                     <input type = "text" class = "form-control" id = "pais" placeholder = "Pais">
+                     <label for = "name">Direccion</label>
+                     <textarea class = "form-control" rows = "3"></textarea>
+
+                 </div>
+             </div>
+          </div>
+       </div>
+
+   </div>-->
+<div class = "container">
+   <div class = "row" >
+       <div class = "col-md-3 col-sm-3" style = "<!--background-color: #dedef8;-->
+         box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+
+
+      </div>
+
+      <div class = "col-md-6 col-sm-3" style = "<!--background-color: #dedef8;-->
+         box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+          <div class = "panel-heading">
+         <h4 class = "panel-title">
+            <P data-toggle = "collapse" data-parent = "#accordion" >
+              GENERALES
+            </P>
+         </h4>
+      </div>
+
+          <div id = "collapse1" class = "panel-collapse collapse in">
+             <div class = "panel-body">
+                 <div class = "col-md-12">
+                     <form method="POST" class="post-form">{% csrf_token %}
+                    <p><label for="id_tipdocum">Tipdocum:</label> <select id="id_tipdocum" name="tipdocum">
+                        {% for sexo in sexos %}
+                        <option value={{ sexo.id }} selected="selected">{{ sexo.sexo }}</option>
+                        <option value={{ sexo.id }}>{{sexo.sexo}}</option>
+                        {% endfor%}
+                        </select></p>
+                        <p><label for="id_iddocum">Iddocum:</label> <input id="id_iddocum" maxlength="100" name="iddocum" type="text" /></p>
+                        <p><label for="id_nombre">Nombre:</label> <input id="id_nombre" maxlength="200" name="nombre" type="text" /></p>
+                        <p><label for="id_apellido">Apellido:</label> <input id="id_apellido" maxlength="200" name="apellido" type="text" /></p>
+                        <p><label for="id_alias">Alias:</label> <input id="id_alias" maxlength="100" name="alias" type="text" /></p>
+                        <p><label for="id_ocupacion">Ocupacion:</label> <input id="id_ocupacion" maxlength="200" name="ocupacion" type="text" /></p>
+                        <p><label for="id_est_civil">Est civil:</label> <input id="id_est_civil" maxlength="1" name="est_civil" type="text" /></p>
+                        <p><label for="id_sexo">Sexo:</label> <select id="id_sexo" name="sexo">
+                        {% for sexo in sexos %}
+                        <option value={{ sexo.id }}>{{sexo.sexo}}</option>
+                        {% endfor%}
+                        </select></p>
+                        </select></p>
+                        <p><label for="id_direccion1">Direccion1:</label> <input id="id_direccion1" maxlength="300" name="direccion1" type="text" /></p>
+                        <p><label for="id_direccion2">Direccion2:</label> <input id="id_direccion2" maxlength="200" name="direccion2" type="text" /></p>
+                        <p><label for="id_pais">Pais:</label> <input id="id_pais" maxlength="200" name="pais" type="text" /></p>
+                        <p><label for="id_ciudad">Ciudad:</label> <input id="id_ciudad" maxlength="200" name="ciudad" type="text" /></p>
+                        <p><label for="id_email">Email:</label> <input id="id_email" maxlength="254" name="email" type="email" /></p>
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+
+                 </div>
+             </div>
+          </div>
+
+      </div>
+
+      <div class = "col-sm-6 col-sm-1" style = "<!--background-color: #dedef8;-->
+         box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;">
+
+
+      </div>
+
+
+
+</body>
+</html>
+{% endblock %}
+<!--
+ <div>
+        <h1><a href="/">Django Girls Blog</a></h1>
+    </div>
+
+    {% for cliente in clientes %}
+        <div>
+            <p>published: {{ cliente.nombre }}</p>
+            <h1><a href="">{{ cliente.apellido }}</a></h1>
+        </div>
+    {% endfor %}
+
+ EXTENDER PLANTILLA-->

@@ -80,7 +80,7 @@ DATABASES = {
        'ENGINE': 'django.db.backends.postgresql_psycopg2',
        'NAME': 'prestado',
        'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'PASSWORD': 'Manolo1010',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -104,4 +104,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/home/manuel/prestado/presta_do/static/'
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
